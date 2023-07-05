@@ -37,3 +37,4 @@ if __name__ == '__main__':
         )
     s3.download_file(cbc_decrypt(BUCKET, key), obj, 'mini.zip')
     print(cbc_decrypt(PP, key))
+    print(cbc_decrypt(CM, key))
