@@ -26,8 +26,8 @@ if __name__ == '__main__':
     key = sys.argv[1]
     obj = sys.argv[2]
     s3 = boto3.client('s3',
-        endpoint_url = 'https://{}.r2.cloudflarestorage.com/{}'.format(cbc_decrypt(ENDPOINT), cbc_decrypt(BUCKET)),
-        aws_access_key_id = cbc_decrypt(ACCESS_KEY),
-        aws_secret_access_key = cbc_decrypt(SECRET_KEY)
+        endpoint_url = 'https://{}.r2.cloudflarestorage.com/{}'.format(cbc_decrypt(ENDPOINT, key), cbc_decrypt(BUCKET, key)),
+        aws_access_key_id = cbc_decrypt(ACCESS_KEY, key),
+        aws_secret_access_key = cbc_decrypt(SECRET_KEY, key)
         )
-    s3.download_file(cbc_decrypt(BUCKET), obj, 'mini.zip')
+    s3.download_file(cbc_decrypt(BUCKET, key), obj, 'mini.zip')
