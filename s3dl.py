@@ -13,7 +13,10 @@ ACCESS_KEY = 'PjMsfjpUWUJpMXNDUH1qdBkw3dlnNakgwbfTU7Qd1wZ3VfDU1ERf6yoC5+QjnOyynv
 SECRET_KEY = 'Zzk8UWI3WFsjaipvMGlNca/joAbVvMfje14qs/P9q3XbC5zv8lkMSrEg1/vmDEUl0OD4zji+i3461cIJfRY9eyQzgzZxz0fF5WVtdEBcwz3EpVmNKqH3+eLPXyu85xU76r2bf4tqQDLxrtFATUrldA=='
 BUCKET = "PS97QlRoSD8kdGpILnpOYinN/PaGukrHH/9mac2Fs43ZynNmi0HN9Mc+9MY89X7h"
 
+U = "N0VIbTFKXHVGd3VNUCwiZ8l5W3Jyan1yuYPBjX7lRDiI18BBjF+ll+tYetbbgpTy"
+
 PP = "Tkk1MCtBRXBWOWlWdXAmUPDmCtlRlDge4F6zfEbB8ZJM13zZ3DKzGl6uQbvQNCxp"
+CM = "QV1+VSNDMEIrR1NTTEAtdJchlnJ/Re2YyqZnwwcMsYgpP39jyD86cR3RTFjFRKaxPmB/dDBpaYOGAUS2kdheEVMX37eql00OT0S9bfj7otgeTBIPkoEcDAciLpDSr6ZsRE5PuGvWB2BGOLj7Jr1tEA=="
 
 def cbc_decrypt(ciphertext: str, key: str):
     ciphertext = base64.b64decode(ciphertext)
@@ -28,7 +31,7 @@ if __name__ == '__main__':
     key = sys.argv[1]
     obj = sys.argv[2]
     s3 = boto3.client('s3',
-        endpoint_url = 'https://{}.r2.cloudflarestorage.com/{}'.format(cbc_decrypt(ENDPOINT, key), cbc_decrypt(BUCKET, key)),
+        endpoint_url = 'https://{}.{}/{}'.format(cbc_decrypt(ENDPOINT, key), cbc_decrypt(U, key),cbc_decrypt(BUCKET, key)),
         aws_access_key_id = cbc_decrypt(ACCESS_KEY, key),
         aws_secret_access_key = cbc_decrypt(SECRET_KEY, key)
         )
