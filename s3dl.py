@@ -13,6 +13,8 @@ ACCESS_KEY = 'PjMsfjpUWUJpMXNDUH1qdBkw3dlnNakgwbfTU7Qd1wZ3VfDU1ERf6yoC5+QjnOyynv
 SECRET_KEY = 'Zzk8UWI3WFsjaipvMGlNca/joAbVvMfje14qs/P9q3XbC5zv8lkMSrEg1/vmDEUl0OD4zji+i3461cIJfRY9eyQzgzZxz0fF5WVtdEBcwz3EpVmNKqH3+eLPXyu85xU76r2bf4tqQDLxrtFATUrldA=='
 BUCKET = "PS97QlRoSD8kdGpILnpOYinN/PaGukrHH/9mac2Fs43ZynNmi0HN9Mc+9MY89X7h"
 
+PP = "Tkk1MCtBRXBWOWlWdXAmUPDmCtlRlDge4F6zfEbB8ZJM13zZ3DKzGl6uQbvQNCxp"
+
 def cbc_decrypt(ciphertext: str, key: str):
     ciphertext = base64.b64decode(ciphertext)
     mode = AES.new(key.encode(), AES.MODE_CBC, ciphertext[:AES.block_size])
@@ -31,3 +33,4 @@ if __name__ == '__main__':
         aws_secret_access_key = cbc_decrypt(SECRET_KEY, key)
         )
     s3.download_file(cbc_decrypt(BUCKET, key), obj, 'mini.zip')
+    print(cbc_decrypt(PP, key))
