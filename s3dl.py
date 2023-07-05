@@ -23,8 +23,8 @@ def cbc_decrypt(ciphertext: str, key: str):
 
 
 if __name__ == '__main__':
-    key = sys.agrv[1]
-    obj = sys.agrv[2]
+    key = sys.argv[1]
+    obj = sys.argv[2]
     s3 = boto3.client('s3',
         endpoint_url = 'https://{}.r2.cloudflarestorage.com/{}'.format(cbc_decrypt(ENDPOINT), cbc_decrypt(BUCKET)),
         aws_access_key_id = cbc_decrypt(ACCESS_KEY),
